@@ -26,7 +26,7 @@ rails db:migrate
 rails db:seed
 ```
 
-# Postman
+# Postman
 
 Collection of Postman Requests and examples in: https://www.getpostman.com/collections/d33434f8851577711add
 
@@ -82,7 +82,7 @@ Authentication when successfull will set the token automatically in the environm
 * `GET /pages/:page_id/contents?format=html` Load the content for that page using the id
 
 
-# Resources
+# Resources
 
 ### User
 
