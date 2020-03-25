@@ -7,7 +7,13 @@
 * Authentication: JWT and bcrypt
 * Serialization: Activemodel Serialziers (:json format)
 
-To setup the database locally just add your configurations to the `.env` file included in the project
+To setup the database locally just add your configurations to a new `.env` file. Use the included `.env.example` in the project
+
+Create your own keybase using: 
+
+`EDITOR=vim rails credentials:edit`
+
+ And save the file, this will create a `master.key` file. Otherwise the JWT encryption process will fail.
 
 ```
 bundle install
@@ -20,21 +26,17 @@ rails db:migrate
 rails db:seed
 ```
 
-Create your own keybase using: 
-
-`EDITOR=vim rails credentials:edit` and save the file, this will create a `master.key` file otherwise the JWT encryption process will fail.
-
-### Heroku temporal server
-
-I uploaded a test server in Heroku, it can be found in: https://library-api-blue.herokuapp.com/
-
-Check seeds for password and email. It can be tested with Postman, just change the {{service_url}}
-
 # Postman
 
 Collection of Postman Requests and examples in: https://www.getpostman.com/collections/d33434f8851577711add
 
 It contains examples of successfull and failures for each request.
+
+### Heroku temporal server
+
+I uploaded a test server in Heroku, it can be found in: https://library-api-blue.herokuapp.com/
+
+Check seeds for password and email. It can be tested with Postman, just change the {{service_url}} variable or string in the path to https://library-api-blue.herokuapp.com/
 
 # API
 
