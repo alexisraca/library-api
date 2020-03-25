@@ -12,6 +12,7 @@ class BooksController < ApplicationController
 
   def show
     book = Book.find(params[:id])
+    # TODO: render a list of pages? or the page number as part of the book yield?
     render_resource book
   end
 

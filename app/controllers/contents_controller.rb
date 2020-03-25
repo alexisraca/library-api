@@ -15,7 +15,7 @@ class ContentsController < ApplicationController
     if content.blank?
       render_not_found
     elsif content.content_format.file?
-      # render binaries
+      # TODO: render binaries
     else
       render plain: content.body, status: :ok
     end

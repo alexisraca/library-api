@@ -4,4 +4,6 @@ class Content < ApplicationRecord
 
   validates :content_format, presence: true
   validates :page, presence: true
+
+  # TODO install carrierwave or paperclip to manage file upload
 end

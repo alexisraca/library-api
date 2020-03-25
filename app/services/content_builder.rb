@@ -13,6 +13,7 @@ class ContentBuilder
       return
     end
 
+    # TODO manage file uploads and formats
     content.file = content_params[:file]
     content.body = content_params[:body]
     content.content_format = allowed_format
