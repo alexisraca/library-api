@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate
+  before_action :authenticate_request
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     head 404
@@ -50,8 +50,8 @@ class ApplicationController < ActionController::API
     }, status: status
   end
 
-  def authenticate
-    @authenticated = AuthorizeApiRequest.call(request.headers).result
+  def authenticate_request
+    @current_user = AuthorizeApiRequest.new(request.headers).call
     render json: { error: 'Not Authorized' }, status: 401 unless @authenticated
   end
 end

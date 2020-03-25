@@ -1,21 +1,20 @@
 class AuthorizeApiRequest
-  prepend SimpleCommand
+  include ActiveModel::AttributeMethods
+  include ActiveModel::Model
 
-  def initialize(headers = {})
-    @headers = headers
-  end
+  attr_accessor :headers
 
   def call
-    authorized_application_id
+    user
   end
 
   private
 
   attr_reader :headers
 
-  def authorized_application_id
-    @application_id ||= decoded_auth_token[:application_id] if decoded_auth_token
-    @application_id || errors.add(:token, 'Invalid token') && nil
+  def user
+    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user || errors.add(:token, 'Invalid token') && nil
   end
 
   def decoded_auth_token
