@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_014054) do
+ActiveRecord::Schema.define(version: 2020_03_25_022236) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "content_formats", force: :cascade do |t|
+    t.string "name"
+    t.string "sufixes", default: "[]"
+    t.boolean "file", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -24,6 +32,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_014054) do
     t.integer "page_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "content_format_id"
+    t.index ["content_format_id"], name: "index_contents_on_content_format_id"
     t.index ["page_id"], name: "index_contents_on_page_id"
   end
 

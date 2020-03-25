@@ -19,9 +19,19 @@ User.create(
     password_confirmation: "12345")
 end
 
-book_1 = Book.create(name: "Clean Code")
-book_2 = Book.create(name: "Clean Coder")
-book_3 = Book.create(name: "All Code")
-book_4 = Book.create(name: "All Coder")
-book_5 = Book.create(name: "Why Code")
-book_6 = Book.create(name: "Why Coder")
+Book.create(name: "Clean Code")
+Book.create(name: "Clean Coder")
+Book.create(name: "All Code")
+Book.create(name: "All Coder")
+Book.create(name: "Why Code")
+Book.create(name: "Why Coder")
+
+html_format = ContentFormat.create(name: "HTML")
+
+Book.all.each do |book|
+  5.times do
+    page = book.pages.create
+    page.contents.create(body: "<html></html>", content_format: html_format)
+  end
+end
+
