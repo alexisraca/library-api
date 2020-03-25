@@ -20,11 +20,13 @@ rails db:migrate
 rails db:seed
 ```
 
-Create your own keybase using: `EDITOR=vim rails credentials:edit` and save the file, this will create a `master.key` file.
+Create your own keybase using: 
+
+`EDITOR=vim rails credentials:edit` and save the file, this will create a `master.key` file otherwise the JWT encryption process will fail.
 
 ### Heroku temporal server
 
-I uploaded a test server in Heroku, it can be found in: 
+I uploaded a test server in Heroku, it can be found in: https://library-api-blue.herokuapp.com/
 
 Check seeds for password and email. It can be tested with Postman, just change the {{service_url}}
 
@@ -101,5 +103,9 @@ Source of truth for the content, it has body and file fields, you should use one
 ### ContentFormat
 
 As a kind of list, one and only one should be created for each format, in the `seeds.rb` file you can find an example of the "HTML" ContentFormat.
+
+# Test suite
+
+Used Rspec for test suite, just run: `rspec spec/`
 
 
