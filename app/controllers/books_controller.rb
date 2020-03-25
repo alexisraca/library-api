@@ -15,6 +15,11 @@ class BooksController < ApplicationController
     render_resource book
   end
 
+  def create
+    book = Book.create!(book_params)
+    render_resource book, status: :created
+  end
+
   def update
     book = Book.find(params[:id])
     book.update(name: book_params[:name])
