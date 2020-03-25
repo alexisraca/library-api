@@ -25,8 +25,8 @@ class ApplicationController < ActionController::API
         page: params[:page] || 1,
         per: params[:per] || 100,
         pages: args[:total_pages] || collection.total_pages,
-        total_records: args[:total_records] || total_model_records(collection)
-      } : { total_records: args[:total_records] || total_model_records(collection) }
+        total_records: args[:total_records] || total_model_records(collection)
+      } : { total_records: args[:total_records] || total_model_records(collection) }
     render json: collection, meta: meta, **args
   end
 
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_request
-    @current_user = AuthorizeApiRequest.new(request.headers).call
-    render json: { error: 'Not Authorized' }, status: 401 unless @authenticated
+    @current_user = AuthorizeApiRequest.new(headers: request.headers).call
+    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
 end

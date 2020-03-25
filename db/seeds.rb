@@ -18,3 +18,10 @@ User.create(
     last_name: Faker::Name.last_name, password: "12345",
     password_confirmation: "12345")
 end
+
+book_1 = Book.create(name: "Clean Code")
+book_2 = Book.create(name: "Clean Coder")
+book_3 = Book.create(name: "All Code")
+book_4 = Book.create(name: "All Coder")
+book_5 = Book.create(name: "Why Code")
+book_6 = Book.create(name: "Why Coder")
