@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_03_25_022236) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_022236) do
 
   create_table "content_formats", force: :cascade do |t|
     t.string "name"
-    t.string "sufixes", default: "[]"
+    t.string "sufixes", default: [], array: true
     t.boolean "file", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -29,17 +32,17 @@ ActiveRecord::Schema.define(version: 2020_03_25_022236) do
   create_table "contents", force: :cascade do |t|
     t.text "body"
     t.string "file"
-    t.integer "page_id"
+    t.bigint "page_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "content_format_id"
+    t.bigint "content_format_id"
     t.index ["content_format_id"], name: "index_contents_on_content_format_id"
     t.index ["page_id"], name: "index_contents_on_page_id"
   end
 
   create_table "pages", force: :cascade do |t|
     t.integer "page_number", null: false
-    t.integer "book_id"
+    t.bigint "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_pages_on_book_id"
